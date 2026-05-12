@@ -56,9 +56,3 @@ Run `npx react-native-reusables doctor` after setup or when something breaks. Us
 
 - PortalHost is required for Dialog, DropdownMenu, Tooltip, Popover, AlertDialog—place it in root layout.
 - Keep path aliases and `components.json` in sync; provide `cn` at the configured utils path.
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (docs: installation/manual.mdx, cli.mdx, components/*.mdx)
-- https://reactnativereusables.com/docs/installation
--->

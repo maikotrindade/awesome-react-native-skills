@@ -322,11 +322,3 @@ const handleRefresh = async () => {
   }
 />
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/modal
-- https://reactnative.dev/docs/switch
-- https://reactnative.dev/docs/activityindicator
-- https://reactnative.dev/docs/refreshcontrol
--->

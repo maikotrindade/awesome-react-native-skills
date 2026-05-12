@@ -451,15 +451,3 @@ const panResponder = PanResponder.create({
   },
 });
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/pressable
-- https://reactnative.dev/docs/button
-- https://reactnative.dev/docs/handling-touches
-- https://reactnative.dev/docs/gesture-responder-system
-- https://reactnative.dev/docs/touchableopacity
-- https://reactnative.dev/docs/touchablehighlight
-- https://reactnative.dev/docs/touchablenativefeedback
-- https://reactnative.dev/docs/touchablewithoutfeedback
--->

@@ -167,4 +167,3 @@ Targets vary by app complexity and device tier.
 - Target sub-2s TTI; anything over 4s needs work.
 - Filter background launches (push notifications) before reporting metrics.
 
-<!-- Source references: https://github.com/callstackincubator/agent-skills/blob/main/skills/react-native-best-practices/references/native-measure-tti.md -->

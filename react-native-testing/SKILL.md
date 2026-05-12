@@ -4,7 +4,6 @@ description: Deep React Native Testing Library (RNTL) reference — v13 (React 1
 metadata:
   author: maikotrindade
   version: "2026.5.0"
-  source: Reviewed and updated from https://github.com/callstack/react-native-testing-library/tree/main/skills/react-native-testing
 ---
 
 # React Native Testing Library
@@ -37,9 +36,3 @@ Check `@testing-library/react-native` in `package.json`:
 - **`userEvent` over `fireEvent`** — more realistic interaction simulation
 - **`queryBy*` only for non-existence assertions** (`.not.toBeOnTheScreen()`)
 - **v14: always `await`** every API (including `render`, `fireEvent`, `act`)
-
-<!--
-Source references:
-- https://github.com/callstack/react-native-testing-library/tree/main/skills/react-native-testing
-- https://callstack.github.io/react-native-testing-library/
--->

@@ -4,7 +4,6 @@ description: shadcn/ui-style components for React Native with NativeWind v4, RN 
 metadata:
   author: maikotrindade
   version: "2026.5.0"
-  source: Reviewed and updated from https://github.com/hairyf/skills/tree/main/skills/react-native-reusables
 ---
 
 # React Native Reusables

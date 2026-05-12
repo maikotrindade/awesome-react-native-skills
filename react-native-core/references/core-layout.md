@@ -286,10 +286,3 @@ Affects `start`/`end` values in margin/padding.
 4. **Avoid absolute positioning** when Flexbox can solve it
 5. **Test on different screen sizes** - use percentages and flex for responsiveness
 6. **Use `alignSelf`** to override parent alignment for specific children
-
-<!--
-Source references:
-- https://reactnative.dev/docs/flexbox
-- https://reactnative.dev/docs/layout-props
-- https://www.yogalayout.dev/
--->

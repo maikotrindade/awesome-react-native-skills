@@ -391,10 +391,3 @@ renderItem={({ item }) => (
   </Pressable>
 )}
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/flatlist
-- https://reactnative.dev/docs/sectionlist
-- https://reactnative.dev/docs/virtualizedlist
--->

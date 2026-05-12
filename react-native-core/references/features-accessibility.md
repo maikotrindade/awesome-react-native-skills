@@ -283,9 +283,3 @@ const [message, setMessage] = useState('');
 // When message changes, screen reader announces it
 setMessage('Form submitted successfully');
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/accessibility
-- https://reactnative.dev/docs/accessibilityinfo
--->

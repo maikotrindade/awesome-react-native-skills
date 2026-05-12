@@ -42,9 +42,3 @@ Expo provides a full-stack toolchain on top of React Native: file-based routing 
 - **File-based routing** — routes live in `app/`; never co-locate components, types, or utilities in `app/`
 - **API route secrets** — use `eas env:create` for secrets; client-side env vars use `EXPO_PUBLIC_` prefix (inlined at build time)
 - **SDK upgrades** — always run `npx expo install --fix` then `npx expo-doctor` after upgrading; clear caches before debugging
-
-<!--
-Source references:
-- https://github.com/expo/skills (plugins/expo/skills/)
-- https://docs.expo.dev/skills/
--->

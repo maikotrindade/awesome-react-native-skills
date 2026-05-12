@@ -80,9 +80,3 @@ render={({ field: { onChange, onBlur, value } }) => (
 - Run `doctor` after init or when adding components manually; fix any reported issues before assuming a library bug
 - When reporting issues, include the output of `npx react-native-reusables --log-level all doctor` and the failing command
 - Overlay issues almost always come down to a missing or mis-placed `PortalHost`
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (apps/docs/content/docs/cli.mdx)
-- https://reactnativereusables.com/docs/cli
--->

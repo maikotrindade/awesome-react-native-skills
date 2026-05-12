@@ -4,7 +4,6 @@ description: React Native core components, layout, styling, animations, lists, p
 metadata:
   author: maikotrindade
   version: "2026.5.0"
-  source: Reviewed and updated from https://github.com/hairyf/skills/tree/main/skills/react-native
 ---
 
 # React Native Core

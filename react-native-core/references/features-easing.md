@@ -312,9 +312,3 @@ const customEasing = {
   elastic: Easing.elastic(1.5),
 };
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/easing
-- https://easings.net/
--->

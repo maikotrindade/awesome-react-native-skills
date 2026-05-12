@@ -41,10 +41,3 @@ Use with Button for icon-only or icon+label buttons; keep `Text` for the label w
 
 - Use `Text` inside Button (and similar components) so `TextClassContext` can apply variant styles.
 - Use `<Icon as={LucideIcon} />` for icons; do not wrap every Lucide icon individually.
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (docs: components/text.mdx, index.mdx)
-- https://reactnativereusables.com/docs/components/text
-- https://lucide.dev/guide/packages/lucide-react-native
--->

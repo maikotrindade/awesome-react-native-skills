@@ -147,9 +147,3 @@ npx react-native-reusables doctor
 - **NativeWind v4** requires `inlineRem: 16` in metro config and `.dark:root` (not `.dark`) for dark theme variables
 - **PortalHost** is required for any overlay component — place it once at the end of the root layout
 - Keep `global.css`, `tailwind.config`, and `theme.ts` in sync when changing theme variables
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (docs: installation/index.mdx, installation/manual.mdx)
-- https://reactnativereusables.com/docs/installation
--->

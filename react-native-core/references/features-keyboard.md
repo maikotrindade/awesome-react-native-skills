@@ -239,9 +239,3 @@ const Form = () => {
   );
 };
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/keyboard
-- https://reactnative.dev/docs/keyboardavoidingview
--->

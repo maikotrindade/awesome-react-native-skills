@@ -72,9 +72,3 @@ import { Text } from '@/components/ui/text';
 
 - Components use `className` and often expose variants (e.g. `variant="outline"`, `size="sm"`). Use the `cn()` helper to merge class names.
 - Overlay components (Dialog, DropdownMenu, Tooltip, Popover) require `PortalHost` in the root layout.
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (docs: components/button.mdx, input.mdx, dialog.mdx, text.mdx, alert-dialog.mdx)
-- https://reactnativereusables.com/docs/components
--->

@@ -526,14 +526,3 @@ const useDeepLinking = () => {
   }, []);
 };
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/platform-specific-code
-- https://reactnative.dev/docs/dimensions
-- https://reactnative.dev/docs/linking
-- https://reactnative.dev/docs/appstate
-- https://reactnative.dev/docs/keyboardavoidingview
-- https://reactnative.dev/docs/alert
-- https://reactnative.dev/docs/statusbar
--->

@@ -127,9 +127,3 @@ eas env:create --name MY_SECRET --value "supersecret" --environment production
 - `appVersionSource: "remote"` eliminates manual version bumps in `app.json`
 - Secrets belong in EAS environment variables, not `EXPO_PUBLIC_` vars or source code
 - Use `--auto-submit` flag to combine build + App Store submission in a single command
-
-<!--
-Source references:
-- https://github.com/expo/skills (plugins/expo/skills/expo-deployment/SKILL.md)
-- https://docs.expo.dev/eas/
--->

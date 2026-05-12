@@ -66,10 +66,3 @@ npx shadcn add http://localhost:3000/r/hello-world.json
 
 - Use `doctor` after setup or when debugging; use `--log-level all` for verbose output when filing bugs.
 - Custom registries list RNR components via full URLs in `registryDependencies`.
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (docs: cli.mdx, create-your-own-registry.mdx)
-- https://reactnativereusables.com/docs/cli
-- https://reactnativereusables.com/docs/create-your-own-registry
--->

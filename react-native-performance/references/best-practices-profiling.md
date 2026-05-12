@@ -160,4 +160,3 @@ For scroll inside the sheet, prefer `useAnimatedScrollHandler` over `onScroll` s
 - Flashlight is the only good CI-friendly FPS benchmark (Android only); export JSON and compare across builds.
 - For bottom sheets and other gesture-driven UI, move state to SharedValues so the JS profiler stays quiet during interaction.
 
-<!-- Source references: https://github.com/callstackincubator/agent-skills/blob/main/skills/react-native-best-practices/references/js-profile-react.md https://github.com/callstackincubator/agent-skills/blob/main/skills/react-native-best-practices/references/js-measure-fps.md https://github.com/callstackincubator/agent-skills/blob/main/skills/react-native-best-practices/references/native-profiling.md https://github.com/callstackincubator/agent-skills/blob/main/skills/react-native-best-practices/references/js-bottomsheet.md -->

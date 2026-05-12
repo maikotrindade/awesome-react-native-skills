@@ -35,9 +35,3 @@ After adding your first Clerk block, complete setup with the [Expo quick start](
 
 - Prefer **add** via CLI so dependencies and files are aligned with the registry.
 - Blocks live in your app; customize by editing the added files and keeping imports (e.g. `@/components/ui/*`) consistent with your `components.json` aliases.
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (docs: blocks/authentication/index.mdx)
-- https://reactnativereusables.com/docs/blocks
--->

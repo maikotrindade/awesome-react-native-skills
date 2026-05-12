@@ -293,11 +293,3 @@ const App = () => {
   return <View style={styles(isDark).container} />;
 };
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/colors
-- https://reactnative.dev/docs/platformcolor
-- https://reactnative.dev/docs/appearance
-- https://reactnative.dev/docs/dynamiccolorios
--->

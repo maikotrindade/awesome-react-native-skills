@@ -36,9 +36,3 @@ When you change a CSS variable in `global.css`, update the matching value in `th
 
 - Edit `global.css` for colors/radius; then update `tailwind.config` if you add new variables, and keep `theme.ts` in sync.
 - Use `THEME` and `NAV_THEME` from `theme.ts` for navigation and any non-class styling.
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (docs: customization.mdx)
-- https://reactnativereusables.com/docs/customization
--->

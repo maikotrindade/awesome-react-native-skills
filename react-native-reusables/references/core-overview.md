@@ -23,9 +23,3 @@ React Native Reusables is not a component library—it is a system for building 
 - Add components with the CLI (`npx react-native-reusables add <name>`) or copy from the registry manually.
 - Import from your aliased paths (e.g. `@/components/ui/button`, `@/components/ui/text`).
 - Use the official docs for [installation](/docs/installation), [customization](/docs/customization), and [CLI](/docs/cli).
-
-<!--
-Source references:
-- https://github.com/founded-labs/react-native-reusables (docs: index.mdx)
-- https://reactnativereusables.com/docs
--->

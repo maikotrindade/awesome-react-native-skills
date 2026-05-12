@@ -149,9 +149,3 @@ function renderWithProviders(ui: React.ReactElement) {
 - `userEvent` is always async — `fireEvent` is sync in v13, async in v14
 - For async UI updates, prefer `findBy*` over `waitFor` + `getBy*`
 - Always use `screen` for queries; don't destructure from `render()`
-
-<!--
-Source references:
-- https://github.com/callstack/react-native-testing-library/blob/main/skills/react-native-testing/SKILL.md
-- https://callstack.github.io/react-native-testing-library/docs/api/queries
--->

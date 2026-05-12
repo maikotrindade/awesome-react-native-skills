@@ -191,4 +191,3 @@ After fixing, re-profile the same flow:
 - Test Android leaks via repeated config changes (rotation); test iOS leaks in release builds — some only appear there.
 - Prefer RAII (C++), ARC + `weak` (Swift), `AutoCloseable` + `WeakReference` (Kotlin) over manual lifecycle tracking.
 
-<!-- Source references: https://github.com/callstackincubator/agent-skills/blob/main/skills/react-native-best-practices/references/js-memory-leaks.md https://github.com/callstackincubator/agent-skills/blob/main/skills/react-native-best-practices/references/native-memory-leaks.md https://github.com/callstackincubator/agent-skills/blob/main/skills/react-native-best-practices/references/native-memory-patterns.md -->

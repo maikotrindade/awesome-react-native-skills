@@ -247,9 +247,3 @@ const useVibration = () => {
   };
 };
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/share
-- https://reactnative.dev/docs/vibration
--->

@@ -229,8 +229,3 @@ const flipCard = () => {
 - **Use for animations** - Prefer transforms over layout properties
 - **Native driver support** - All transforms work with `useNativeDriver: true`
 - **GPU accelerated** - Transforms are hardware accelerated
-
-<!--
-Source references:
-- https://reactnative.dev/docs/transforms
--->

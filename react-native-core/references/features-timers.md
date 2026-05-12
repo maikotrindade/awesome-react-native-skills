@@ -259,9 +259,3 @@ const retryWithBackoff = async (
   }
 };
 ```
-
-<!--
-Source references:
-- https://reactnative.dev/docs/timers
-- https://reactnative.dev/docs/interactionmanager
--->

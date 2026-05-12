@@ -173,8 +173,3 @@ const FullScreenView = () => (
 - `barStyle` controls icons color (API 23+)
 - `backgroundColor` sets background color (API 21+)
 - `translucent` allows content behind status bar
-
-<!--
-Source references:
-- https://reactnative.dev/docs/statusbar
--->

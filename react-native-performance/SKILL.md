@@ -4,7 +4,6 @@ description: Deep React Native performance — FPS profiling, bundle size, TTI m
 metadata:
   author: maikotrindade
   version: "2026.5.0"
-  source: Reviewed and updated from https://github.com/callstackincubator/agent-skills/tree/main/skills/react-native-best-practices
 ---
 
 # React Native Performance
@@ -45,9 +44,3 @@ metadata:
 - **React Compiler** is opt-in via Expo SDK 54+ (`experiments.reactCompiler: true`) — replaces most `useMemo`/`useCallback`
 - **Profile before refactoring** — 80% of perf wins come from removing waterfalls, expensive renders, and bundle bloat, not micro-optimizations
 - **Reanimated v3 stable; v4 opt-in/beta** — pick one per project, don't mix
-
-<!--
-Source references:
-- https://github.com/callstackincubator/agent-skills/tree/main/skills/react-native-best-practices
-- https://reactnative.dev/docs/performance
--->

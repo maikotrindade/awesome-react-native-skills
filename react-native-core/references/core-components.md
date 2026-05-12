@@ -295,13 +295,3 @@ const App = () => (
 4. **Control TextInput** with `value` and `onChangeText` for React state
 5. **Handle keyboard** with KeyboardAvoidingView for forms
 6. **Optimize ScrollView** with `scrollEventThrottle` and `removeClippedSubviews`
-
-<!--
-Source references:
-- https://reactnative.dev/docs/view
-- https://reactnative.dev/docs/text
-- https://reactnative.dev/docs/image
-- https://reactnative.dev/docs/textinput
-- https://reactnative.dev/docs/scrollview
-- https://reactnative.dev/docs/intro-react-native-components
--->
