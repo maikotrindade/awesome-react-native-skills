@@ -8,12 +8,9 @@ metadata:
 
 # React Native Performance
 
-> **Deep performance reference.** For high-level performance basics (FlatList tuning, memoization, Hermes intro, expo-image), see:
-> - `react-native-core/best-practices-performance.md` — core RN primitives perf
-> - `react-native/best-practices-performance.md` — ecosystem-level perf
-> - `react-native-core/features-new-architecture.md` — Fabric/JSI/TurboModules overview
+> **Deep performance reference.** Canonical home for React Native performance — covers FlatList tuning, memoization, Hermes, expo-image, FPS measurement, bundle treemap analysis, Hermes mmap, R8 Android, 16 KB page-size alignment, view flattening, native threading, JNI memory patterns, and the profiling toolchain.
 >
-> This skill goes deeper: measurement methodologies, bundle treemap analysis, Hermes mmap, R8 Android, 16 KB page-size alignment, view flattening, native threading, JNI memory patterns, and the profiling toolchain.
+> For Fabric/JSI/TurboModules architectural overview, see `react-native-core/features-new-architecture.md`.
 
 ## Core References
 

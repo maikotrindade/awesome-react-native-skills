@@ -1,6 +1,6 @@
 ---
 name: react-native-ecosystem
-description: React Native ecosystem — navigation, state, data fetching, Reanimated, storage, TypeScript patterns, testing, and New Architecture. Use when building production React Native apps with React Navigation, Zustand, TanStack Query, Reanimated v3, or the New Architecture.
+description: React Native ecosystem — navigation, state, data fetching, Reanimated, storage, TypeScript patterns, accessibility, and deep linking. Use when building production React Native apps with React Navigation, Zustand, TanStack Query, or Reanimated v3.
 metadata:
   author: maikotrindade
   version: "2026.1.0"
@@ -9,8 +9,12 @@ metadata:
 # React Native Ecosystem
 
 > Covers React Native ecosystem libraries and production patterns as of 2026.
-> For core RN primitives (View, Text, StyleSheet, FlatList) see the `react-native` skill.
-> For Expo SDK and EAS tooling see the `react-native-expo` skill.
+>
+> **See also:**
+> - Core RN primitives (View, Text, StyleSheet, FlatList, New Architecture) → `react-native-core`
+> - Expo SDK and EAS tooling → `react-native-expo`
+> - Deep performance work (FPS, bundle, TTI, memory, native) → `react-native-performance`
+> - React Native Testing Library deep dive → `react-native-testing`
 
 ## Core References
 
@@ -42,15 +46,12 @@ metadata:
 
 | Topic | Description | Reference |
 |-------|-------------|-----------|
-| Performance | FlatList tuning, memoization, Hermes, New Architecture adoption, bundle size | [best-practices-performance](references/best-practices-performance.md) |
-| Testing | Jest + React Native Testing Library, mocking native modules, Maestro E2E | [best-practices-testing](references/best-practices-testing.md) |
 | Accessibility | a11y props, screen reader testing, semantic roles, focus management | [best-practices-accessibility](references/best-practices-accessibility.md) |
 
 ## Advanced
 
 | Topic | Description | Reference |
 |-------|-------------|-----------|
-| New Architecture | Fabric, JSI, TurboModules, Codegen — default in RN 0.76+, migration guide | [advanced-new-architecture](references/advanced-new-architecture.md) |
 | Deep Linking | Universal Links, App Links, React Navigation linking config, dynamic links | [advanced-deep-linking](references/advanced-deep-linking.md) |
 
 ## Key Recommendations
@@ -60,5 +61,3 @@ metadata:
 - **Animations**: Prefer Reanimated v3 over the legacy `Animated` API; worklets run on the UI thread by default
 - **Storage**: MMKV for frequent read/write (sync, 10× faster); AsyncStorage for simple persistence; SecureStore for credentials
 - **TypeScript**: Enable `strict: true`; type navigation with `useNavigation<NavigationProp<RootStackParamList>>()`
-- **Testing**: Use `userEvent` (RNTL) over `fireEvent` for realistic interactions; query by role/text first, `testID` last
-- **New Architecture**: Enabled by default in RN 0.76+; write new native modules as TurboModules with Codegen specs

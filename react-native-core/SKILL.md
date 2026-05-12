@@ -8,7 +8,13 @@ metadata:
 
 # React Native Core
 
-> Based on React Native docs as of 2026. For ecosystem libraries (navigation, state, TanStack Query, Reanimated) see the `react-native-ecosystem` skill. For Expo SDK and EAS tooling see the `react-native-expo` skill.
+> Based on React Native docs as of 2026.
+>
+> **See also:**
+> - Ecosystem libraries (navigation, state, TanStack Query, Reanimated) → `react-native-ecosystem`
+> - Expo SDK and EAS tooling → `react-native-expo`
+> - Deep performance work (FPS, bundle, TTI, memory, native) → `react-native-performance`
+> - React Native Testing Library deep dive → `react-native-testing`
 
 React Native lets you build mobile apps using only JavaScript. It uses the same design as React, letting you compose a rich mobile UI from declarative components. With React Native, you build a real mobile app that's indistinguishable from an app built using Objective-C or Java.
 
@@ -87,7 +93,6 @@ React Native lets you build mobile apps using only JavaScript. It uses the same 
 
 | Topic | Description | Reference |
 |-------|-------------|-----------|
-| Performance | Performance optimization, Hermes, New Architecture, profiling and common bottlenecks | [best-practices-performance](references/best-practices-performance.md) |
 | Debugging | React Native DevTools, LogBox, Dev Menu, and debugging techniques | [best-practices-debugging](references/best-practices-debugging.md) |
 
 ## Key Recommendations

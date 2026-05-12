@@ -8,7 +8,9 @@ metadata:
 
 # React Native Testing Library
 
-> Deep API reference for `@testing-library/react-native` v13 and v14. For high-level testing strategy (Jest setup, Maestro E2E, mocking native modules), see the `react-native` skill's `best-practices-testing` reference.
+> Deep API reference for `@testing-library/react-native` v13 and v14.
+>
+> **Scope:** unit + component tests with Jest + RNTL. For end-to-end UI flows on real devices/simulators, use **[Maestro](https://maestro.mobile.dev/)** — declarative YAML flows, no code, runs against the built app. RNTL and Maestro are complementary, not alternatives.
 
 **IMPORTANT:** API signatures, sync/async behavior, and available functions differ between v13 and v14. Always check the project's `package.json` and load the matching version reference rather than relying on memorized patterns.
 
