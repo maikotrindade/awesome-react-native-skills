@@ -104,6 +104,55 @@ Deep React Native Testing Library reference (v13 sync, v14 async). For end-to-en
 | [reference-v14-api](react-native-testing/references/reference-v14-api.md) | v14 API — async render, React 19, v13→v14 migration |
 | [best-practices-anti-patterns](react-native-testing/references/best-practices-anti-patterns.md) | Wrong queries, waitFor misuse, missing await |
 
+### [react-native-brownfield-migration](react-native-brownfield-migration/)
+
+Incremental adoption of React Native or Expo inside existing native iOS/Android apps.
+
+| Reference | Description |
+|-----------|-------------|
+| [quick-start](react-native-brownfield-migration/references/quick-start.md) | Shared preflight and path-selection gate (Expo vs bare) |
+| [expo-create-app](react-native-brownfield-migration/references/expo-create-app.md) | Scaffold a new Expo app before brownfield setup |
+| [expo-quick-start](react-native-brownfield-migration/references/expo-quick-start.md) | Expo plugin setup and packaging readiness |
+| [expo-ios-integration](react-native-brownfield-migration/references/expo-ios-integration.md) | Expo iOS packaging and host startup integration |
+| [expo-android-integration](react-native-brownfield-migration/references/expo-android-integration.md) | Expo Android packaging, publish, and host integration |
+| [bare-quick-start](react-native-brownfield-migration/references/bare-quick-start.md) | Bare React Native baseline setup |
+| [bare-ios-xcframework-generation](react-native-brownfield-migration/references/bare-ios-xcframework-generation.md) | Bare iOS XCFramework generation |
+| [bare-android-aar-generation](react-native-brownfield-migration/references/bare-android-aar-generation.md) | Bare Android AAR generation and publish |
+| [bare-ios-native-integration](react-native-brownfield-migration/references/bare-ios-native-integration.md) | Bare iOS host integration |
+| [bare-android-native-integration](react-native-brownfield-migration/references/bare-android-native-integration.md) | Bare Android host integration |
+
+### [upgrading-react-native](upgrading-react-native/)
+
+Full React Native upgrade workflow — rn-diff-purge diffs, dependencies, React, Expo SDK alignment.
+
+| Reference | Description |
+|-----------|-------------|
+| [upgrading-react-native](upgrading-react-native/references/upgrading-react-native.md) | Router — choose the right upgrade path |
+| [upgrade-helper-core](upgrading-react-native/references/upgrade-helper-core.md) | Core Upgrade Helper workflow and reliability gates |
+| [upgrading-dependencies](upgrading-react-native/references/upgrading-dependencies.md) | Dependency compatibility checks and migration planning |
+| [react](upgrading-react-native/references/react.md) | React and React 19 upgrade alignment rules |
+| [expo-sdk-upgrade](upgrading-react-native/references/expo-sdk-upgrade.md) | Expo SDK-specific upgrade layer (conditional) |
+| [upgrade-verification](upgrading-react-native/references/upgrade-verification.md) | Manual post-upgrade verification checklist |
+| [monorepo-singlerepo-targeting](upgrading-react-native/references/monorepo-singlerepo-targeting.md) | Monorepo and single-repo command scoping |
+
+### [github](github/)
+
+GitHub workflow patterns using `gh` CLI — PRs, stacked PRs, squash merge, rebase.
+
+| Reference | Description |
+|-----------|-------------|
+| [stacked-pr-workflow](github/references/stacked-pr-workflow.md) | Merge stacked PRs into main as individual squash commits |
+
+### [github-actions](github-actions/)
+
+GitHub Actions patterns for React Native iOS simulator and Android emulator cloud builds with downloadable artifacts.
+
+| Reference | Description |
+|-----------|-------------|
+| [gha-ios-composite-action](github-actions/references/gha-ios-composite-action.md) | Composite `action.yml` for iOS simulator `.app.tar.gz` builds |
+| [gha-android-composite-action](github-actions/references/gha-android-composite-action.md) | Composite `action.yml` for Android emulator `.apk` builds |
+| [gha-workflow-and-downloads](github-actions/references/gha-workflow-and-downloads.md) | End-to-end workflow wiring plus `gh` and REST download commands |
+
 ## How to use
 
 Point Claude (or your agent harness) at this repo and load the skill whose section matches your task. The `SKILL.md` at the root of each section is the entry point; it cross-links to deeper references and to sibling skills.
