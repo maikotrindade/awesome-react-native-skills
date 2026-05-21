@@ -1,0 +1,12 @@
+{
+  "name": "awesome-react-native-skills",
+  "description": "Curated Claude skills for building production React Native apps in 2026: core, ecosystem, Expo, performance, testing, brownfield migration, upgrading, GitHub workflows, and more.",
+  "version": "2026.5.0",
+  "author": {
+    "name": "Maiko Trindade",
+    "url": "https://github.com/maikotrindade"
+  },
+  "homepage": "https://github.com/maikotrindade/awesome-react-native-skills",
+  "repository": "https://github.com/maikotrindade/awesome-react-native-skills",
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "awesome-react-native-skills",
+  "owner": {
+    "name": "Maiko Trindade",
+    "url": "https://github.com/maikotrindade"
+  },
+  "description": "A curated marketplace of Claude Code skills for building production React Native apps in 2026.",
+  "plugins": [
+    {
+      "name": "awesome-react-native-skills",
+      "description": "All-in-one bundle: React Native core, ecosystem, Expo, performance, testing, brownfield migration, upgrading, and GitHub workflow skills.",
+      "version": "2026.5.0",
+      "source": {
+        "source": "github",
+        "repo": "maikotrindade/awesome-react-native-skills"
+      }
+    }
+  ]
+}
