@@ -1,6 +1,6 @@
 ---
 name: react-native-expo-router
-description: Expo Router file-based routing — layouts, route groups, typed params, API routes, and SDK 56 migration from @react-navigation.
+description: Expo Router file-based routing — layouts, route groups, typed params, API routes, SDK 56 migration from @react-navigation, and SDK 58 router changes.
 ---
 
 # Expo Router
@@ -141,6 +141,17 @@ npx expo-codemod sdk-56-expo-router-react-navigation-replace src
 2. Check for deprecated symbols in the new `expo-router/*` modules
 3. Run `npx tsc --noEmit` and `npx expo start`
 4. Remove unused `@react-navigation/*` packages from `package.json`
+
+## SDK 58 Changes
+
+| Area | Change |
+|------|--------|
+| Native tabs | Import from `expo-router/native-tabs` (was `expo-router/unstable-native-tabs`) |
+| Custom navigators | `withLayoutContext` is replaced by `createStandardRouterNavigator` or `integrateWithRouter`; some `expo-router/react-navigation` exports moved or were removed |
+| Web output | `web.output` defaults to `"server"`. Set `"static"` and enable `apiRoutes` in the `expo-router` config plugin to keep SDK 57 behavior |
+| Async routes (web) | On by default; disable with `asyncRoutes: { web: false }` |
+| iOS 26+ stack headers | Transparent Liquid Glass by default; content scrolls under the header, so rely on `contentInsetAdjustmentBehavior="automatic"` |
+| Optional peers | `expo-symbols` for Android `md` icons in `NativeTabs.Trigger.Icon`; `@expo/ui` for `Stack.Toolbar` |
 
 ## Key Points
 

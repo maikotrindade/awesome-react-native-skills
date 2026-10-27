@@ -40,4 +40,4 @@ metadata:
 - **TurboModules** — prefer sync methods for fast operations; async only when work crosses threads
 - **React Compiler** is opt-in via Expo SDK 54+ (`experiments.reactCompiler: true`) — replaces most `useMemo`/`useCallback`
 - **Profile before refactoring** — 80% of perf wins come from removing waterfalls, expensive renders, and bundle bloat, not micro-optimizations
-- **Reanimated v3 stable; v4 opt-in/beta** — pick one per project, don't mix
+- **Reanimated 4 is current** — New Architecture only, needs `react-native-worklets`; prefer CSS transitions for state-driven motion and shared values for gesture/scroll-driven motion
