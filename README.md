@@ -72,8 +72,10 @@ Production ecosystem libraries that sit on top of React Native.
 | [core-state-management](skills/react-native-ecosystem/references/core-state-management.md) | Zustand, Jotai, Redux Toolkit — devtools and persistence |
 | [core-data-fetching](skills/react-native-ecosystem/references/core-data-fetching.md) | TanStack Query v5 + Axios — queries, mutations, offline |
 | [core-typescript](skills/react-native-ecosystem/references/core-typescript.md) | Strict config, component typing, navigation typing, zod |
-| [features-reanimated](skills/react-native-ecosystem/references/features-reanimated.md) | Reanimated v3 — shared values, worklets, layout animations |
-| [features-gesture-handler](skills/react-native-ecosystem/references/features-gesture-handler.md) | Gesture Handler v2 — Tap/Pan/Pinch, composition |
+| [features-reanimated](skills/react-native-ecosystem/references/features-reanimated.md) | Reanimated 4 — CSS animations, shared values, layout animations, v3 migration |
+| [features-worklets](skills/react-native-ecosystem/references/features-worklets.md) | react-native-worklets — runtimes, scheduleOnUI/scheduleOnRN, background work |
+| [features-gesture-handler](skills/react-native-ecosystem/references/features-gesture-handler.md) | Gesture Handler 3 — gesture hooks, composition, v2 migration |
+| [features-flashlist](skills/react-native-ecosystem/references/features-flashlist.md) | FlashList v2 — recycling rules, masonry, chat lists, v1 migration |
 | [features-storage](skills/react-native-ecosystem/references/features-storage.md) | MMKV, AsyncStorage, Expo SecureStore — choosing |
 | [features-permissions](skills/react-native-ecosystem/references/features-permissions.md) | react-native-permissions — check, request, rationale |
 | [features-push-notifications](skills/react-native-ecosystem/references/features-push-notifications.md) | FCM + APNs via Firebase, token registration |

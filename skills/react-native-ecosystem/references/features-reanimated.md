@@ -1,243 +1,271 @@
-# Features — React Native Reanimated v3
+# Features — React Native Reanimated 4
 
-Reanimated v3 runs animations on the UI thread via worklets, eliminating JS bridge overhead. Always prefer it over the legacy `Animated` API.
+Reanimated 4 runs animations on the UI thread. It has two APIs that can be mixed freely:
+
+- **CSS animations and transitions** — declarative, style-based, no worklets. Use for state-driven UI (toggles, enter/hover effects, loaders).
+- **Shared values and worklets** — imperative, frame-by-frame. Use for gesture-driven, scroll-driven, or physics-based motion.
+
+> Reanimated 4.7 requires React Native **0.86–0.88**, the **New Architecture**, and `react-native-worklets` **0.13.x**. Projects still on the old architecture must stay on Reanimated 3.x. Prefer Reanimated over the built-in `Animated` API for anything non-trivial.
 
 ## Installation
 
 ```bash
-npm install react-native-reanimated
+npx expo install react-native-reanimated react-native-worklets   # Expo
+npm install react-native-reanimated react-native-worklets         # bare RN
 ```
 
-Add to `babel.config.js`:
+The Babel plugin moved to the worklets package. In bare projects, add it as the **last** plugin:
+
 ```js
+// babel.config.js
 module.exports = {
-  plugins: ['react-native-reanimated/plugin'], // must be last plugin
+  presets: ['module:@react-native/babel-preset'],
+  plugins: ['react-native-worklets/plugin'], // was 'react-native-reanimated/plugin' in v3
 };
 ```
 
-## Core Primitives
+`babel-preset-expo` adds the plugin automatically, so Expo projects need no Babel changes. After installing, rebuild the native app and clear the Metro cache (`npx expo start -c` / `npx react-native start --reset-cache`).
 
-| Primitive | Purpose |
-|-----------|---------|
-| `useSharedValue` | Mutable value that lives on UI thread |
-| `useAnimatedStyle` | Derive animated styles from shared values |
-| `useDerivedValue` | Compute a new shared value from others |
-| `useAnimatedProps` | Animate non-style props (SVG, etc.) |
-| `runOnJS` | Call a JS-thread function from a worklet |
-| `runOnUI` | Schedule a worklet on the UI thread |
+## Choosing an API
 
-## Basic Animation
+| Situation | Use |
+|-----------|-----|
+| Style changes when React state changes | CSS transition (`transitionProperty`) |
+| Looping or keyframed motion (spinner, pulse, shimmer) | CSS animation (`animationName`) |
+| Element mounts / unmounts / reorders | Layout animations (`entering`, `exiting`, `layout`) |
+| Follows a finger or scroll position | Shared values + `useAnimatedStyle` |
+| Physics (springs with velocity, decay) | `withSpring` / `withDecay` |
+
+## CSS Transitions
+
+Animate between style values whenever the style changes on re-render:
 
 ```tsx
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  withSpring,
-  Easing,
-} from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 
-function FadeInBox() {
-  const opacity = useSharedValue(0);
-
-  useEffect(() => {
-    opacity.value = withTiming(1, { duration: 400, easing: Easing.out(Easing.quad) });
-  }, []);
-
-  const animatedStyle = useAnimatedStyle(() => ({
-    opacity: opacity.value,
-    transform: [{ scale: opacity.value }],
-  }));
-
-  return <Animated.View style={[styles.box, animatedStyle]} />;
+function ExpandableCard({ expanded }: { expanded: boolean }) {
+  return (
+    <Animated.View
+      style={{
+        height: expanded ? 240 : 80,
+        backgroundColor: expanded ? '#1e293b' : '#334155',
+        transitionProperty: ['height', 'backgroundColor'],
+        transitionDuration: 250,
+        transitionTimingFunction: 'ease-out',
+      }}
+    />
+  );
 }
 ```
 
-## Animation Drivers
+- `transitionProperty` accepts a single property, an array, or `'all'` (avoid `'all'` on large style objects).
+- `transitionDuration` / `transitionDelay` accept numbers (ms) or strings (`'250ms'`, `'0.25s'`).
+- Timing functions: `'ease'`, `'linear'`, `'ease-in-out'`, or `cubicBezier()`, `steps()`, `linear()` imported from `react-native-reanimated`.
 
-```ts
-// withTiming — linear/eased interpolation
-opacity.value = withTiming(1, { duration: 300 });
+## CSS Animations
 
-// withSpring — physics-based spring
-scale.value = withSpring(1.2, { damping: 10, stiffness: 100, mass: 1 });
+Define keyframes once with `css.keyframes` and reference them from a style:
 
-// withDelay — delay before animation starts
-opacity.value = withDelay(500, withTiming(1));
+```tsx
+import Animated, { css } from 'react-native-reanimated';
 
-// withRepeat — repeat N times (-1 = infinite)
-scale.value = withRepeat(withTiming(1.1, { duration: 600 }), -1, true); // true = reverse
-
-// withSequence — run animations one after another
-offset.value = withSequence(
-  withTiming(-10, { duration: 50 }),
-  withRepeat(withTiming(10, { duration: 100 }), 4, true),
-  withTiming(0, { duration: 50 })
-);
-```
-
-## useDerivedValue
-
-```ts
-const progress = useSharedValue(0); // 0 → 1
-
-// Derived value recomputes whenever `progress` changes
-const color = useDerivedValue(() =>
-  interpolateColor(progress.value, [0, 1], ['#ff0000', '#00ff00'])
-);
-
-const animatedStyle = useAnimatedStyle(() => ({
-  backgroundColor: color.value,
-}));
-```
-
-## Interpolate
-
-```ts
-import { interpolate, Extrapolation } from 'react-native-reanimated';
-
-const animatedStyle = useAnimatedStyle(() => {
-  const scale = interpolate(
-    scrollY.value,          // input value
-    [0, 100, 200],          // input range
-    [1, 0.8, 0],            // output range
-    Extrapolation.CLAMP     // clamp outside range
-  );
-  return { transform: [{ scale }] };
+const pulse = css.keyframes({
+  from: { opacity: 1, transform: [{ scale: 1 }] },
+  '50%': { opacity: 0.6, transform: [{ scale: 0.96 }] },
+  to: { opacity: 1, transform: [{ scale: 1 }] },
 });
+
+const styles = css.create({
+  skeleton: {
+    animationName: pulse,
+    animationDuration: '1.2s',
+    animationIterationCount: 'infinite',
+    animationTimingFunction: 'ease-in-out',
+  },
+});
+
+export function SkeletonRow() {
+  return <Animated.View style={[{ height: 16, borderRadius: 8, backgroundColor: '#e5e7eb' }, styles.skeleton]} />;
+}
+```
+
+- Toggle `animationPlayState: 'paused' | 'running'` to pause without unmounting.
+- `animationFillMode`, `animationDirection`, and `animationDelay` follow the web CSS semantics.
+- Lifecycle callbacks are style keys next to the animation config: `onCSSAnimationStart`, `onCSSAnimationEnd`, `onCSSAnimationIteration`, and for transitions `onCSSTransitionRun`, `onCSSTransitionStart`, `onCSSTransitionEnd`.
+- Define keyframes and `css.create` styles at module scope so they are not recreated on every render.
+
+## Shared Values
+
+| Primitive | Purpose |
+|-----------|---------|
+| `useSharedValue(initial)` | Mutable value readable on both JS and UI threads |
+| `useAnimatedStyle(() => style)` | Style recomputed on the UI thread when shared values change |
+| `useDerivedValue(() => value)` | Read-only value computed from other shared values |
+| `useAnimatedProps(() => props)` | Animate non-style props (SVG attributes, `TextInput` text) |
+| `useAnimatedReaction(prepare, react)` | Run a side effect when a derived value changes |
+| `useAnimatedRef()` + `measure()` | Read layout synchronously on the UI thread |
+
+```tsx
+import Animated, { useSharedValue, useAnimatedStyle, withSpring } from 'react-native-reanimated';
+
+function LikeButton() {
+  const scale = useSharedValue(1);
+  const style = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
+
+  return (
+    <Pressable
+      onPressIn={() => (scale.value = withSpring(0.9))}
+      onPressOut={() => (scale.value = withSpring(1))}
+    >
+      <Animated.View style={style}>{/* icon */}</Animated.View>
+    </Pressable>
+  );
+}
+```
+
+With the React Compiler enabled, use `sv.get()` / `sv.set(v)` instead of `.value` — the compiler cannot track property mutation on shared values.
+
+## Animation Functions
+
+```ts
+x.value = withTiming(100, { duration: 300, easing: Easing.out(Easing.cubic) });
+x.value = withSpring(100);                                  // default spring
+x.value = withSpring(100, { duration: 400, dampingRatio: 0.8 }); // duration-based spring
+x.value = withDecay({ velocity: e.velocityX, clamp: [0, 300] });
+x.value = withDelay(200, withTiming(1));
+x.value = withRepeat(withTiming(1.1, { duration: 600 }), -1, true); // -1 = infinite, true = reverse
+x.value = withSequence(withTiming(-8), withTiming(8), withTiming(0));
+x.value = withClamp({ min: 0, max: 200 }, withSpring(250));        // clamp a spring's overshoot
+cancelAnimation(x);
+```
+
+Reanimated 4 changed the default spring to a softer, duration-based config. Ready-made presets are exported: `GentleSpringConfig`, `SnappySpringConfig`, `WigglySpringConfig`. Use `Reanimated3DefaultSpringConfig` to reproduce the v3 feel during a migration.
+
+## Interpolation
+
+```ts
+import { interpolate, interpolateColor, Extrapolation } from 'react-native-reanimated';
+
+const style = useAnimatedStyle(() => ({
+  opacity: interpolate(scrollY.value, [0, 80], [1, 0], Extrapolation.CLAMP),
+  backgroundColor: interpolateColor(progress.value, [0, 1], ['#ef4444', '#22c55e']),
+}));
 ```
 
 ## Scroll-Driven Animations
 
 ```tsx
-import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated';
+import Animated, { useAnimatedRef, useScrollOffset, useAnimatedStyle, interpolate, Extrapolation } from 'react-native-reanimated';
 
-function AnimatedHeader() {
-  const scrollY = useSharedValue(0);
-
-  const scrollHandler = useAnimatedScrollHandler({
-    onScroll: (event) => {
-      scrollY.value = event.contentOffset.y;
-    },
-  });
+function CollapsingHeader() {
+  const scrollRef = useAnimatedRef<Animated.ScrollView>();
+  const offset = useScrollOffset(scrollRef);
 
   const headerStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(scrollY.value, [0, 80], [1, 0], Extrapolation.CLAMP),
-    transform: [{ translateY: interpolate(scrollY.value, [0, 80], [0, -40], Extrapolation.CLAMP) }],
+    transform: [{ translateY: interpolate(offset.value, [0, 120], [0, -60], Extrapolation.CLAMP) }],
   }));
 
   return (
     <>
       <Animated.View style={[styles.header, headerStyle]} />
-      <Animated.ScrollView onScroll={scrollHandler} scrollEventThrottle={16}>
-        {/* content */}
-      </Animated.ScrollView>
+      <Animated.ScrollView ref={scrollRef}>{/* content */}</Animated.ScrollView>
     </>
   );
 }
 ```
 
+`useScrollOffset` is the current name; `useScrollViewOffset` remains as an alias. Use `useAnimatedScrollHandler` when you need `onBeginDrag` / `onMomentumEnd` callbacks.
+
 ## Layout Animations
 
 ```tsx
-import Animated, { FadeIn, FadeOut, SlideInRight, Layout } from 'react-native-reanimated';
+import Animated, { FadeIn, FadeOut, LinearTransition } from 'react-native-reanimated';
 
-// Entering/exiting animations
-<Animated.View entering={FadeIn.duration(300)} exiting={FadeOut.duration(200)}>
-  <Text>Appears and disappears with fade</Text>
-</Animated.View>
-
-// Layout transition — animates when position/size changes
-<Animated.View layout={Layout.springify()}>
-  {/* Re-renders with spring animation when layout changes */}
-</Animated.View>
-
-// Conditional rendering with animation
-{isVisible && (
-  <Animated.View entering={SlideInRight} exiting={FadeOut}>
-    <Card />
+{items.map((item) => (
+  <Animated.View
+    key={item.id}
+    entering={FadeIn.duration(200)}
+    exiting={FadeOut.duration(150)}
+    layout={LinearTransition.springify()}
+  >
+    <Row item={item} />
   </Animated.View>
-)}
+))}
 ```
 
-## Keyframe Animations
+- `Layout` is a deprecated alias — use `LinearTransition` (or `SequencedTransition`, `FadingTransition`, `CurvedTransition`).
+- Custom entrances: `new Keyframe({ 0: {...}, 100: {...} }).duration(400)`.
+- Wrap a subtree in `<LayoutAnimationConfig skipEntering>` to suppress entering animations on the first render (e.g., a list that is already populated).
+- `Animated.FlatList` accepts `itemLayoutAnimation` for reorder/remove animations.
+
+## Calling JS from the UI Thread
+
+Worklet-thread helpers now live in `react-native-worklets`. `runOnJS` and `runOnUI` still work but are deprecated:
 
 ```ts
-import { Keyframe } from 'react-native-reanimated';
+import { scheduleOnRN, scheduleOnUI } from 'react-native-worklets';
 
-const enteringAnimation = new Keyframe({
-  0: { opacity: 0, transform: [{ scale: 0.5 }] },
-  60: { opacity: 1, transform: [{ scale: 1.1 }] },
-  100: { opacity: 1, transform: [{ scale: 1 }] },
-}).duration(400);
+// UI → JS: arguments are passed directly, not curried
+scheduleOnRN(onDismiss, itemId);          // v3: runOnJS(onDismiss)(itemId)
 
-<Animated.View entering={enteringAnimation}>
+// JS → UI
+scheduleOnUI(() => {
+  'worklet';
+  const layout = measure(aref);
+});                                        // v3: runOnUI(() => {...})()
 ```
 
-## runOnJS — Calling JS from Worklets
+See [features-worklets](features-worklets.md) for threads, runtimes, and shared memory.
 
-```ts
-// Worklets run on UI thread. Use runOnJS to call JS-thread functions.
-import { runOnJS } from 'react-native-reanimated';
+## Shared Element Transitions
 
-const onGestureEnd = useCallback((completed: boolean) => {
-  if (completed) navigation.goBack();
-}, []);
+Shared element transitions are **off by default** in Reanimated 4. Enable the static feature flag in the app's `package.json`, then rebuild:
 
-const gestureHandler = useAnimatedGestureHandler({
-  onEnd: (_, ctx) => {
-    if (ctx.translateX > 100) {
-      runOnJS(onGestureEnd)(true); // safe cross-thread call
-    }
-  },
-});
-```
-
-## useAnimatedRef + measure
-
-```tsx
-import Animated, { useAnimatedRef, measure, runOnUI } from 'react-native-reanimated';
-
-function MeasureExample() {
-  const aref = useAnimatedRef<Animated.View>();
-
-  const handlePress = () => {
-    runOnUI(() => {
-      const layout = measure(aref);
-      if (layout) {
-        console.log(layout.width, layout.height, layout.pageX, layout.pageY);
-      }
-    })();
-  };
-
-  return <Animated.View ref={aref} onPress={handlePress} />;
+```json
+{
+  "reanimated": {
+    "staticFeatureFlags": { "ENABLE_SHARED_ELEMENT_TRANSITIONS": true }
+  }
 }
 ```
 
-## Shared Element Transitions (React Navigation)
+```tsx
+<Animated.Image sharedTransitionTag={`photo-${id}`} source={{ uri }} style={styles.thumb} />
+```
+
+Use matching `sharedTransitionTag`s on both screens of a native stack. `SharedTransitionBoundary` (`isActive`) scopes which subtree participates. Treat the feature as experimental and test on both platforms.
+
+## Accessibility
+
+Respect the OS "reduce motion" setting:
 
 ```tsx
-import Animated from 'react-native-reanimated';
+import { ReducedMotionConfig, ReduceMotion, useReducedMotion } from 'react-native-reanimated';
 
-// In list screen
-<Animated.Image
-  source={{ uri: item.imageUrl }}
-  sharedTransitionTag={`image-${item.id}`}
-  style={styles.thumbnail}
-/>
-
-// In detail screen
-<Animated.Image
-  source={{ uri: item.imageUrl }}
-  sharedTransitionTag={`image-${item.id}`}
-  style={styles.fullImage}
-/>
+<ReducedMotionConfig mode={ReduceMotion.System} />   // app-wide default
+const reduceMotion = useReducedMotion();              // per-component check
+x.value = withTiming(1, { reduceMotion: ReduceMotion.System });
 ```
+
+## Migrating from Reanimated 3
+
+| v3 | v4 |
+|----|----|
+| `react-native-reanimated/plugin` | `react-native-worklets/plugin` |
+| `runOnJS(fn)(arg)` | `scheduleOnRN(fn, arg)` |
+| `runOnUI(fn)()` | `scheduleOnUI(fn)` |
+| `useAnimatedGestureHandler` | Removed — use Gesture Handler callbacks ([features-gesture-handler](features-gesture-handler.md)) |
+| `useScrollViewOffset` | `useScrollOffset` (old name kept as alias) |
+| `Layout` transition | `LinearTransition` |
+| `useWorkletCallback` | Removed — use `useCallback` with a `'worklet'` directive |
+| Default spring (stiffness-based) | Duration-based; use `Reanimated3DefaultSpringConfig` to keep old feel |
+| Old Architecture supported | New Architecture only |
 
 ## Performance Notes
 
-- Worklets (functions inside `useAnimatedStyle`, `useAnimatedScrollHandler`, etc.) run entirely on the UI thread — no JS bridge needed
-- Never reference JS-side variables inside worklets that can't be serialized; use `useDerivedValue` to bridge
-- `runOnJS` incurs a cross-thread hop — avoid it in tight animation loops
-- Prefer `withSpring` over rapid `withTiming` chains for more natural feel
-- Layout animations on long lists can be expensive — scope to visible items
+- CSS animations and transitions avoid per-frame JS entirely — prefer them when motion is not tied to input.
+- Animate `transform` and `opacity` where possible; animating `width`/`height`/`top` triggers layout on every frame.
+- Keep worklets small and avoid capturing large objects — everything captured is copied to the UI runtime.
+- Avoid `scheduleOnRN` inside `onUpdate`-style callbacks that fire every frame.
+- Use `PerformanceMonitor` (exported from Reanimated) during development to watch UI-thread FPS.
+- Test with `setUpTests()` and `withReanimatedTimer` / `advanceAnimationByTime` from Reanimated's Jest utilities.
