@@ -1,4 +1,4 @@
-A curated set of Claude skills for building production React Native apps in 2026, distributed as a Claude Code marketplace plugin. Each section is a self-contained skill with a `SKILL.md` entry point and topical references under `references/`.
+A curated set of AI skills for building production React Native apps in 2026, distributed as a Claude Code marketplace plugin. Each section is a self-contained skill with a `SKILL.md` entry point and topical references under `references/`.
 
 ## Install
 
