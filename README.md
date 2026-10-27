@@ -2,12 +2,36 @@ A curated set of Claude skills for building production React Native apps in 2026
 
 ## Install
 
-In Claude Code:
+### Claude Code
 
 ```
 /plugin marketplace add maikotrindade/awesome-react-native-skills
 /plugin install awesome-react-native-skills@awesome-react-native-skills
 ```
+
+### Cursor
+
+Cursor loads Agent Skills from `~/.cursor/skills/` (all projects) or `.cursor/skills/` (one project).
+
+```bash
+git clone https://github.com/maikotrindade/awesome-react-native-skills.git
+mkdir -p ~/.cursor/skills
+cp -r awesome-react-native-skills/skills/* ~/.cursor/skills/
+```
+
+To scope the skills to a single project, copy them into `<project>/.cursor/skills/` instead.
+
+### OpenAI Codex CLI
+
+Codex loads skills from `~/.codex/skills/` (or `$CODEX_HOME/skills/`).
+
+```bash
+git clone https://github.com/maikotrindade/awesome-react-native-skills.git
+mkdir -p ~/.codex/skills
+cp -r awesome-react-native-skills/skills/* ~/.codex/skills/
+```
+
+Restart Cursor or Codex after copying so the new skills are picked up.
 
 ## Skills
 
