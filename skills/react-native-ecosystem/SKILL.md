@@ -1,9 +1,9 @@
 ---
 name: react-native-ecosystem
-description: React Native ecosystem — navigation, state, data fetching, Reanimated, storage, TypeScript patterns, accessibility, and deep linking. Use when building production React Native apps with React Navigation, Zustand, TanStack Query, or Reanimated v3.
+description: React Native ecosystem — navigation, state, data fetching, Reanimated 4, worklets, Gesture Handler 3, FlashList v2, storage, TypeScript patterns, accessibility, and deep linking. Use when building production React Native apps with React Navigation, Zustand, TanStack Query, Reanimated, Gesture Handler, or FlashList.
 metadata:
   author: maikotrindade
-  version: "2026.1.0"
+  version: "2026.10.0"
 ---
 
 # React Native Ecosystem
@@ -31,8 +31,15 @@ metadata:
 
 | Topic | Description | Reference |
 |-------|-------------|-----------|
-| Reanimated v3 | useSharedValue, useAnimatedStyle, withTiming/Spring, layout animations, Keyframe | [features-reanimated](references/features-reanimated.md) |
-| Gesture Handler v2 | GestureDetector, Tap/Pan/Pinch/LongPress, gesture composition, Reanimated integration | [features-gesture-handler](references/features-gesture-handler.md) |
+| Reanimated 4 | CSS animations and transitions, shared values, springs, layout animations, shared element transitions, v3 → v4 migration | [features-reanimated](references/features-reanimated.md) |
+| Worklets | `react-native-worklets` runtimes, `scheduleOnUI`/`scheduleOnRN`, background worker runtimes, Synchronizables | [features-worklets](references/features-worklets.md) |
+| Gesture Handler 3 | Hook API (`usePanGesture`, `useTapGesture`, …), composition hooks, cross-view relations, ReanimatedSwipeable, v2 → v3 migration | [features-gesture-handler](references/features-gesture-handler.md) |
+
+### Lists
+
+| Topic | Description | Reference |
+|-------|-------------|-----------|
+| FlashList v2 | Recycling rules, `useRecyclingState`, item types, masonry, chat lists with `maintainVisibleContentPosition`, v1 → v2 migration | [features-flashlist](references/features-flashlist.md) |
 
 ### Device & Platform
 
@@ -58,6 +65,9 @@ metadata:
 
 - **Navigation**: Use `createNativeStackNavigator` over JS stack; type all routes with `RootStackParamList`
 - **State vs server**: Zustand for client/UI state; TanStack Query for server state — never mix roles
-- **Animations**: Prefer Reanimated v3 over the legacy `Animated` API; worklets run on the UI thread by default
+- **Animations**: Prefer Reanimated 4 over the legacy `Animated` API; use CSS transitions/animations for state-driven motion and shared values for gesture/scroll-driven motion
+- **Threads**: Import `scheduleOnRN`/`scheduleOnUI` from `react-native-worklets`; `runOnJS`/`runOnUI` are deprecated
+- **Gestures**: Write new gestures with Gesture Handler 3 hooks; the v2 `Gesture.*` builders remain only for migration
+- **Long lists**: FlashList v2 with `getItemType`; never keep per-item state in plain `useState` — use `useRecyclingState`
 - **Storage**: MMKV for frequent read/write (sync, 10× faster); AsyncStorage for simple persistence; SecureStore for credentials
 - **TypeScript**: Enable `strict: true`; type navigation with `useNavigation<NavigationProp<RootStackParamList>>()`
