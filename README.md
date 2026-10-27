@@ -93,7 +93,7 @@ Expo toolchain — Router, EAS, modules, SDK upgrades.
 | [features-eas-build](skills/react-native-expo/references/features-eas-build.md) | Build profiles, dev client, local builds, device install |
 | [features-eas-update-deploy](skills/react-native-expo/references/features-eas-update-deploy.md) | OTA updates, EAS Hosting, CI/CD YAML workflows |
 | [features-expo-modules](skills/react-native-expo/references/features-expo-modules.md) | create-expo-module, module DSL, config plugins |
-| [features-upgrading](skills/react-native-expo/references/features-upgrading.md) | SDK 53–56 breaking changes, upgrade flow, doctor |
+| [features-upgrading](skills/react-native-expo/references/features-upgrading.md) | SDK 53–58 breaking changes, upgrade flow, doctor |
 | [best-practices-ui](skills/react-native-expo/references/best-practices-ui.md) | expo-image, responsiveness, NativeTabs, navigation |
 | [best-practices-data](skills/react-native-expo/references/best-practices-data.md) | fetch vs React Query, expo-secure-store, env vars |
 

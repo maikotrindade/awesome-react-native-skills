@@ -250,7 +250,7 @@ These hooks don't make code faster — they reprioritize when work runs.
 
 ## Reanimated (UI-thread animations)
 
-**Reanimated v3 is stable. v4 is opt-in/beta and requires New Architecture + `react-native-worklets`.**
+**Reanimated 4 is the current release. It requires the New Architecture and `react-native-worklets`; old-architecture apps must stay on v3.**
 
 The JS-thread `Animated` API drops frames whenever JS is busy. Reanimated runs animations on the UI thread via worklets — smooth even during heavy JS work.
 
@@ -312,4 +312,4 @@ Removed: `useAnimatedGestureHandler` (use Gesture API), `addWhitelisted*Props`, 
 - React Compiler (Expo SDK 54+, `experiments.reactCompiler: true`) replaces most manual memoization. Run the healthcheck first and fix ESLint errors — the compiler skips files that fail.
 - Use atomic state (Jotai/Zustand selectors) to fix Context-wide re-renders without manual memoization. Always use selectors with Zustand.
 - `useDeferredValue` / `useTransition` require New Arch + memoized children to actually help. They reprioritize, not accelerate.
-- Reanimated v3 is stable; v4 needs New Arch and `react-native-worklets`. Migrate JS-thread `Animated` code to UI-thread shared values for animations that stay smooth under JS load.
+- Reanimated 4 needs New Arch and `react-native-worklets` (v3 only for old-architecture apps). Migrate JS-thread `Animated` code to UI-thread shared values for animations that stay smooth under JS load.
