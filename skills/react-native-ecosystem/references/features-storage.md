@@ -17,14 +17,14 @@
 
 ### Installation
 ```bash
-npm install react-native-mmkv
+npm install react-native-mmkv react-native-nitro-modules  # v4 is a Nitro module (New Architecture)
 ```
 
 ### Basic Usage
 ```ts
-import { MMKV } from 'react-native-mmkv';
+import { createMMKV } from 'react-native-mmkv';
 
-export const storage = new MMKV();
+export const storage = createMMKV();
 
 // Write
 storage.set('username', 'maiko');
@@ -37,7 +37,7 @@ const age = storage.getNumber('age');             // number | undefined
 const onboarded = storage.getBoolean('isOnboarded'); // boolean | undefined
 
 // Delete
-storage.delete('username');
+storage.remove('username');
 
 // Check existence
 const exists = storage.contains('username');
@@ -52,18 +52,23 @@ storage.clearAll();
 ### Multiple Instances (namespacing)
 ```ts
 // Separate storage instances for isolation
-export const userStorage = new MMKV({ id: 'user-storage' });
-export const cacheStorage = new MMKV({ id: 'cache-storage' });
-export const sessionStorage = new MMKV({ id: 'session-storage' });
+export const userStorage = createMMKV({ id: 'user-storage' });
+export const cacheStorage = createMMKV({ id: 'cache-storage' });
+export const sessionStorage = createMMKV({ id: 'session-storage' });
 ```
 
 ### Encryption
 ```ts
 // Encrypted MMKV instance — key must be stored securely (e.g., in Keychain)
-export const secureStorage = new MMKV({
+export const secureStorage = createMMKV({
   id: 'secure-storage',
   encryptionKey: 'my-secret-key', // fetch from native keychain in production
+  encryptionType: 'AES-256',      // default 'AES-128' (key up to 16 bytes); AES-256 allows 32
 });
+
+// Add, rotate or remove encryption on an existing instance
+secureStorage.encrypt('new-secret-key', 'AES-256');
+secureStorage.decrypt();
 ```
 
 ### Zustand Adapter
@@ -75,7 +80,7 @@ import { storage } from './storage';
 const zustandMMKVStorage = createJSONStorage(() => ({
   getItem: (key: string) => storage.getString(key) ?? null,
   setItem: (key: string, value: string) => storage.set(key, value),
-  removeItem: (key: string) => storage.delete(key),
+  removeItem: (key: string) => storage.remove(key),
 }));
 
 export const useSettingsStore = create(
