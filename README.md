@@ -139,6 +139,52 @@ Deep React Native Testing Library reference (v13 sync, v14 async). For end-to-en
 | [reference-v14-api](skills/react-native-testing/references/reference-v14-api.md) | v14 API — async render, React 19, v13→v14 migration |
 | [best-practices-anti-patterns](skills/react-native-testing/references/best-practices-anti-patterns.md) | Wrong queries, waitFor misuse, missing await |
 
+### [react-native-security](skills/react-native-security/)
+
+Client-side hardening — secure storage, secrets, network, auth, integrity, OWASP MASVS.
+
+| Reference | Description |
+|-----------|-------------|
+| [core-secure-storage](skills/react-native-security/references/core-secure-storage.md) | expo-secure-store, react-native-keychain, biometric-gated items, encrypted MMKV v4 |
+| [core-secrets-bundle](skills/react-native-security/references/core-secrets-bundle.md) | What ships in the bundle, `EXPO_PUBLIC_` rules, backend proxies, source maps, R8 |
+| [features-network-security](skills/react-native-security/references/features-network-security.md) | ATS, network security config, public key pinning and rotation |
+| [features-authentication](skills/react-native-security/references/features-authentication.md) | OAuth + PKCE, token lifecycle, biometric unlock |
+| [features-device-integrity](skills/react-native-security/references/features-device-integrity.md) | Jailbreak/root signals, App Attest, Play Integrity, screen capture |
+| [best-practices-masvs](skills/react-native-security/references/best-practices-masvs.md) | OWASP MASVS v2 mapped to React Native, release checklist |
+
+### [react-native-i18n](skills/react-native-i18n/)
+
+Internationalization — locale detection, i18next, plurals and `Intl` formatting, RTL, translation workflow.
+
+| Reference | Description |
+|-----------|-------------|
+| [core-setup](skills/react-native-i18n/references/core-setup.md) | expo-localization / react-native-localize, i18next init, typed keys, language switching |
+| [features-formatting](skills/react-native-i18n/references/features-formatting.md) | CLDR plurals, `Intl` numbers/dates/relative time on Hermes, polyfills |
+| [features-rtl](skills/react-native-i18n/references/features-rtl.md) | `I18nManager`, `start`/`end` styles, mirroring, reload on direction change |
+| [best-practices-workflow](skills/react-native-i18n/references/best-practices-workflow.md) | Key naming, i18next-cli extraction, pseudo-localization, per-app language |
+
+### [react-native-e2e-testing](skills/react-native-e2e-testing/)
+
+End-to-end testing with Maestro — flows, selectors, CI on EAS Workflows and GitHub Actions.
+
+| Reference | Description |
+|-----------|-------------|
+| [core-maestro](skills/react-native-e2e-testing/references/core-maestro.md) | Install, testID selectors, core commands, running locally, Maestro Studio |
+| [features-advanced-flows](skills/react-native-e2e-testing/references/features-advanced-flows.md) | Subflows, env, JavaScript, permissions, deep links, sign-in shortcuts |
+| [features-ci](skills/react-native-e2e-testing/references/features-ci.md) | E2E build profile, EAS Workflows `type: maestro`, GitHub Actions emulators/simulators |
+| [best-practices-stability](skills/react-native-e2e-testing/references/best-practices-stability.md) | Flakiness fixes, test data, coverage choices, Maestro vs Detox |
+
+### [react-native-native-modules](skills/react-native-native-modules/)
+
+Native code on the New Architecture — Turbo Modules, Fabric components, library authoring.
+
+| Reference | Description |
+|-----------|-------------|
+| [core-choosing](skills/react-native-native-modules/references/core-choosing.md) | Turbo Module vs Fabric vs Expo Modules vs Nitro, local vs library |
+| [core-turbo-modules](skills/react-native-native-modules/references/core-turbo-modules.md) | Spec, Codegen, type mapping, Kotlin and Objective-C++, Swift, events |
+| [features-fabric-components](skills/react-native-native-modules/references/features-fabric-components.md) | `codegenNativeComponent`, props, events, commands, Android and iOS views |
+| [best-practices-library-authoring](skills/react-native-native-modules/references/best-practices-library-authoring.md) | create-react-native-library, builder-bob, testing, Expo config plugin, publishing |
+
 ### [react-native-brownfield-migration](skills/react-native-brownfield-migration/)
 
 Incremental adoption of React Native or Expo inside existing native iOS/Android apps.

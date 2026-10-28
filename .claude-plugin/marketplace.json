@@ -8,8 +8,8 @@
   "plugins": [
     {
       "name": "awesome-react-native-skills",
-      "description": "All-in-one bundle: React Native core, ecosystem, Expo, performance, testing, brownfield migration, upgrading, and GitHub workflow skills.",
-      "version": "2026.5.0",
+      "description": "All-in-one bundle: React Native core, ecosystem, Expo, performance, testing, E2E testing, security, i18n, native modules, brownfield migration, upgrading, and GitHub workflow skills.",
+      "version": "2026.10.0",
       "source": {
         "source": "github",
         "repo": "maikotrindade/awesome-react-native-skills"
