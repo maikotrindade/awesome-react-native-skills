@@ -115,6 +115,16 @@ shadcn/ui-style components with NativeWind v4 and RN Primitives.
 | [best-practices-adding-components](skills/react-native-reusables/references/best-practices-adding-components.md) | CLI preference, path aliases, cn helper |
 | [best-practices-troubleshooting](skills/react-native-reusables/references/best-practices-troubleshooting.md) | doctor, log levels, PortalHost, aliases |
 
+### [otf-ui-native](skills/otf-ui-native/)
+
+Free MIT React Native components for Expo apps on iOS, Android, and web, with shared component names and design tokens across OTF's native and web SDKs. Component props differ by platform.
+
+| Reference | Description |
+|-----------|-------------|
+| [SKILL.md](skills/otf-ui-native/SKILL.md) | Add `@otfdashkit/ui-native` to an Expo app and wrap its root in `OTFProvider`. |
+| [Getting started](skills/otf-ui-native/references/getting-started.md) | Install the package, configure the provider, and check native props before reusing web examples. |
+| [Components and docs](https://otf-kit.dev/components?utm_source=directory&utm_medium=organic&utm_campaign=awesome-rn-skills&utm_content=2026-10-31-awesome-rn-skills-ui-native) | Browse the component gallery and setup docs. |
+
 ### [react-native-performance](skills/react-native-performance/)
 
 Deep performance work — measurement, profiling, optimization.
